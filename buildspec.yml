@@ -1,0 +1,25 @@
+version: 0.2
+
+environment_variables:
+    plaintext:
+        HUGO_VERSION: "0.108.0"
+
+phases:
+    install:
+        runtime-versions:
+            docker: 18
+        commands:
+            - cd /tmp
+            - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}0.108.0/hugo_${HUGO_VERSION}_linux-amd64.tar.gz
+            - tar xfvz hugo_${HUGO_VERSION}_linux-amd64.tar.gz
+            - mv hugo /usr/bin/hugo
+            - cd -
+            - rm -rf /tmp/*
+    build:
+        commands:
+            - rm -rf public
+            - hugo
+            - aws s3 sync public/ s3://hello-hugo/ --region=us-east-1 --delete
+    post_build:
+        commands:
+            - echo Build completed on `date`
