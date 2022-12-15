@@ -17,7 +17,7 @@ phases:
 #            - rm -rf /tmp/*
     build:
         commands:
-            - cd -
+            - cd ~
             - cd quickstart
             - rm -rf public
             - hugo
