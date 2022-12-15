@@ -5,16 +5,14 @@ environment_variables:
         HUGO_VERSION: "0.108.0"
 
 phases:
-#    install:
-#        runtime-versions:
-#            docker: 20
-#        commands:
-#            - cd /tmp
-#            - wget -q https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.tar.gz
-#            - tar xfvz hugo_${HUGO_VERSION}_linux-amd64.tar.gz
-#            - mv hugo /usr/bin/hugo
-#            - cd -
-#            - rm -rf /tmp/*
+    install:
+        commands:
+            - cd /tmp
+            - wget -q https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.tar.gz
+            - tar xfvz hugo_${HUGO_VERSION}_linux-amd64.tar.gz
+            - mv hugo /usr/bin/hugo
+            - cd -
+            - rm -rf /tmp/*
     build:
         commands:
             - cd quickstart
